@@ -9,3 +9,19 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+### Did few steps to refactor the code:
+1. Added a try/catch block to the original code to handle the error thrown by JSON.stringify 
+when it encounters a BigInt or a circular reference.
+2. Added implicit default value to return variable `candidate`.
+3. Moved candidate.length checking to exact place where it is actually needed. 
+Since createHash function currently producing string which length is 128.
+4. Moved stringify of event.partitionKey object to the place where it is actually needed.
+5. Wrote tests to cover all the cases. Checked on the original code that all tests are passing.
+
+Summarizing these steps i've decreased if/else nesting level, same as amount of conditions branching.
+And added more clarity by setting default value.
+
+_All these steps are made to make code more readable and easier to understand.
+You can even compare the number of lines of code in the original code and in the refactored code.
+And you will see that the refactored code is shorter (not counting try/catch block)._
